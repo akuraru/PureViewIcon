@@ -13,7 +13,7 @@
         <scene sceneID="fqA-Ee-gkr">
             <objects>
                 <collectionViewController id="vNy-Xv-gqC" customClass="ViewController" customModule="Sample" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="LLs-BT-vn3">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="LLs-BT-vn3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -42,6 +42,26 @@
                                     <constraint firstAttribute="bottom" secondItem="yIt-KF-t9X" secondAttribute="bottom" id="L5K-d7-kcx"/>
                                     <constraint firstAttribute="trailing" secondItem="yIt-KF-t9X" secondAttribute="trailing" id="fBE-5e-wKK"/>
                                     <constraint firstItem="yIt-KF-t9X" firstAttribute="top" secondItem="RYD-8I-adU" secondAttribute="top" id="gKn-ij-weR"/>
+                                </constraints>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PVIMailViewCell" id="rgJ-ZW-X1c">
+                                <rect key="frame" x="49" y="0.0" width="34" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQq-Yf-jaA" customClass="PVIMailView">
+                                            <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="PQq-Yf-jaA" secondAttribute="trailing" id="AlI-j6-ZA8"/>
+                                    <constraint firstItem="PQq-Yf-jaA" firstAttribute="top" secondItem="rgJ-ZW-X1c" secondAttribute="top" id="CBr-9W-XNV"/>
+                                    <constraint firstAttribute="bottom" secondItem="PQq-Yf-jaA" secondAttribute="bottom" id="Hg3-Kk-fia"/>
+                                    <constraint firstItem="PQq-Yf-jaA" firstAttribute="leading" secondItem="rgJ-ZW-X1c" secondAttribute="leading" id="ak0-wJ-FiM"/>
                                 </constraints>
                             </collectionViewCell>
                         </cells>

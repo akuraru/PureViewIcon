@@ -11,7 +11,8 @@ import PureViewIcon
 
 class ViewController: UICollectionViewController {
     let iconIden: [String] = [
-        "PVIHomeViewCell"
+        "PVIHomeViewCell",
+        "PVIMailViewCell",
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
