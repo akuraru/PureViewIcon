@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,33 +33,7 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIt-KF-t9X" customClass="PVIHomeView">
                                             <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Dd-jm-RYr">
-                                                    <rect key="frame" x="6" y="15" width="22" height="16"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUa-Ez-7ib">
-                                                            <rect key="frame" x="20" y="0.0" width="2" height="16"/>
-                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="2" id="Ui3-Mj-YJ3"/>
-                                                            </constraints>
-                                                        </view>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.27450981740000002" green="0.48627451059999999" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstItem="fUa-Ez-7ib" firstAttribute="top" secondItem="5Dd-jm-RYr" secondAttribute="top" id="TFx-d7-D2f"/>
-                                                        <constraint firstAttribute="bottom" secondItem="fUa-Ez-7ib" secondAttribute="bottom" id="UNe-LO-buo"/>
-                                                        <constraint firstAttribute="trailing" secondItem="fUa-Ez-7ib" secondAttribute="trailing" id="vfc-QL-R4F"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="5Dd-jm-RYr" firstAttribute="height" secondItem="yIt-KF-t9X" secondAttribute="height" multiplier="16/34" id="EB6-N5-G5R"/>
-                                                <constraint firstItem="5Dd-jm-RYr" firstAttribute="width" secondItem="yIt-KF-t9X" secondAttribute="width" multiplier="22/34" id="N1b-ah-h3j"/>
-                                                <constraint firstItem="5Dd-jm-RYr" firstAttribute="centerY" secondItem="yIt-KF-t9X" secondAttribute="centerY" multiplier="46/34" id="lZd-BQ-Ied"/>
-                                                <constraint firstItem="5Dd-jm-RYr" firstAttribute="centerX" secondItem="yIt-KF-t9X" secondAttribute="centerX" id="xBJ-vI-AY9"/>
-                                            </constraints>
                                         </view>
                                     </subviews>
                                 </view>
