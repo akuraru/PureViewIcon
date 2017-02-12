@@ -8,27 +8,25 @@ import UIKit
 import SnapKit
 
 struct BorderView {
-    let top: UIView
-    let left: UIView
-    let right: UIView
-    let bottom: UIView
-    let width: CGFloat
+    let view = UIView()
+    let top = UIView()
+    let left = UIView()
+    let right = UIView()
+    let bottom = UIView()
+    var width: CGFloat
     
     init(width: CGFloat = 2) {
-        top = UIView()
-        left = UIView()
-        right = UIView()
-        bottom = UIView()
         self.width = width
         
+        view.translatesAutoresizingMaskIntoConstraints = false
         top.translatesAutoresizingMaskIntoConstraints = false
         left.translatesAutoresizingMaskIntoConstraints = false
         right.translatesAutoresizingMaskIntoConstraints = false
         bottom.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func layoutTop(_ superView: UIView) {
-        superView.addSubview(top);
+    func addTopBorder() {
+        view.addSubview(top);
         top.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
@@ -37,8 +35,8 @@ struct BorderView {
         }
     }
     
-    func layoutLeft(_ superView: UIView) {
-        superView.addSubview(left);
+    func addLeftBorder() {
+        view.addSubview(left);
         left.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
@@ -47,8 +45,8 @@ struct BorderView {
         }
     }
     
-    func layoutRight(_ superView: UIView) {
-        superView.addSubview(right);
+    func addRightBorder() {
+        view.addSubview(right);
         right.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.right.equalToSuperview()
@@ -57,8 +55,8 @@ struct BorderView {
         }
     }
     
-    func layoutBottom(_ superView: UIView) {
-        superView.addSubview(bottom);
+    func addBottomBorder() {
+        view.addSubview(bottom);
         bottom.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
             make.right.equalToSuperview()
@@ -77,38 +75,34 @@ struct BorderView {
 
 @objc(PVIHomeView)
 public class PVIHomeView: UIView {
-    let before: UIView = UIView()
-    let beforeBorder: BorderView = BorderView()
-    let main: UIView = UIView()
-    let mainBorder: BorderView = BorderView()
-    let after: UIView = UIView()
-    let afterBorder: BorderView = BorderView(width: 1)
+    let before = BorderView()
+    let main = BorderView()
+    let after = BorderView(width: 1)
     
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         
         // before
-        self.addSubview(before)
-        beforeBorder.layoutTop(before)
-        beforeBorder.layoutLeft(before)
+        self.addSubview(before.view)
+        before.addTopBorder()
+        before.addLeftBorder()
         
-        before.snp.makeConstraints { (make) in
+        before.view.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(22 / 34.0)
             make.height.equalToSuperview().multipliedBy(22 / 34.0)
         }
-        before.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
+        before.view.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
         
         // main
-        self.addSubview(main)
-        mainBorder.layoutLeft(main)
-        mainBorder.layoutRight(main)
-        mainBorder.layoutBottom(main)
+        self.addSubview(main.view)
+        main.addLeftBorder()
+        main.addRightBorder()
+        main.addBottomBorder()
         
-        main.translatesAutoresizingMaskIntoConstraints = false
-        main.snp.makeConstraints { (make) in
+        main.view.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().multipliedBy(1 + 12 / 34.0)
             make.width.equalToSuperview().multipliedBy(22 / 34.0)
@@ -116,29 +110,25 @@ public class PVIHomeView: UIView {
         }
         
         // after
-        self.addSubview(after)
-        afterBorder.layoutTop(after)
-        afterBorder.layoutLeft(after)
-        afterBorder.layoutRight(after)
+        self.addSubview(after.view)
+        after.addTopBorder()
+        after.addLeftBorder()
+        after.addRightBorder()
         
-        after.translatesAutoresizingMaskIntoConstraints = false
-        after.snp.makeConstraints { (make) in
+        after.view.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(main)
+            make.bottom.equalTo(main.view)
             make.width.equalToSuperview().multipliedBy(8 / 34.0)
             make.height.equalToSuperview().multipliedBy(13 / 34.0)
         }
         
-        beforeBorder.set(color: .white)
-        mainBorder.set(color: .white)
-        afterBorder.set(color: .white)
-        
+        setLine(.white)
         self.backgroundColor = UIColor.red
     }
     
     func setLine(_ color: UIColor) {
-        beforeBorder.set(color: color)
-        mainBorder.set(color: color)
-        afterBorder.set(color: color)
+        before.set(color: color)
+        main.set(color: color)
+        after.set(color: color)
     }
 }
