@@ -19,5 +19,6 @@ Pod::Spec.new do |s|
   end
   s.subspec 'Core' do |ss|
     ss.source_files = 'PureViewIcon/**/*.{swift}'
+    ss.dependency 'SnapKit'
   end
 end
