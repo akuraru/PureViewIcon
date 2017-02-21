@@ -7,7 +7,7 @@
 import UIKit
 import SnapKit
 
-struct BorderView {
+class BorderView {
     let view = UIView()
     let top = UIView()
     let left = UIView()
@@ -26,42 +26,42 @@ struct BorderView {
     }
     
     func addTopBorder() {
-        view.addSubview(top);
-        top.snp.makeConstraints { (make) in
+        view.addSubview(top)
+        top.snp.makeConstraints { [weak self] (make) in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.height.equalTo(view.superview!).multipliedBy(width / 34)
+            make.height.equalTo(self!.view.superview!).multipliedBy(self!.width / 34)
         }
     }
     
     func addLeftBorder() {
-        view.addSubview(left);
-        left.snp.makeConstraints { (make) in
+        view.addSubview(left)
+        left.snp.makeConstraints { [weak self] (make) in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.bottom.equalToSuperview()
-            make.width.equalTo(view.superview!).multipliedBy(width / 34)
+            make.width.equalTo(self!.view.superview!).multipliedBy(self!.width / 34)
         }
     }
     
     func addRightBorder() {
-        view.addSubview(right);
-        right.snp.makeConstraints { (make) in
+        view.addSubview(right)
+        right.snp.makeConstraints { [weak self] (make) in
             make.top.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
-            make.width.equalTo(view.superview!).multipliedBy(width / 34)
+            make.width.equalTo(self!.view.superview!).multipliedBy(self!.width / 34)
         }
     }
     
     func addBottomBorder() {
-        view.addSubview(bottom);
-        bottom.snp.makeConstraints { (make) in
+        view.addSubview(bottom)
+        bottom.snp.makeConstraints { [weak self] (make) in
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
-            make.height.equalTo(view.superview!).multipliedBy(width / 34)
+            make.height.equalTo(self!.view.superview!).multipliedBy(self!.width / 34)
         }
     }
     
@@ -73,18 +73,43 @@ struct BorderView {
     }
 }
 
-@objc(PVIHomeView)
-public class PVIHomeView: UIView {
+@objc
+public class PVIView: UIView {
+    let base = UIView()
     let before = BorderView()
     let main = BorderView()
-    let after = BorderView(width: 1)
-    
+    let after = BorderView()
     
     required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder);
+        super.init(coder: aDecoder)
+        
+        self.addSubview(base)
+        base.clipsToBounds = true
+    }
+    
+    func setLine(_ color: UIColor) {
+        before.set(color: color)
+        main.set(color: color)
+        after.set(color: color)
+        
+        before.view.layer.borderColor = color.cgColor
+        main.view.layer.borderColor = color.cgColor
+        after.view.layer.borderColor = color.cgColor
+    }
+}
+
+@objc(PVIHomeView)
+public class PVIHomeView: PVIView {
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        base.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+            make.center.equalToSuperview()
+        }
         
         // before
-        self.addSubview(before.view)
+        base.addSubview(before.view)
         before.addTopBorder()
         before.addLeftBorder()
         
@@ -97,7 +122,7 @@ public class PVIHomeView: UIView {
         before.view.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
         
         // main
-        self.addSubview(main.view)
+        base.addSubview(main.view)
         main.addLeftBorder()
         main.addRightBorder()
         main.addBottomBorder()
@@ -110,7 +135,8 @@ public class PVIHomeView: UIView {
         }
         
         // after
-        self.addSubview(after.view)
+        after.width = 1
+        base.addSubview(after.view)
         after.addTopBorder()
         after.addLeftBorder()
         after.addRightBorder()
@@ -125,25 +151,20 @@ public class PVIHomeView: UIView {
         setLine(.white)
         self.backgroundColor = UIColor.red
     }
-    
-    func setLine(_ color: UIColor) {
-        before.set(color: color)
-        main.set(color: color)
-        after.set(color: color)
-    }
 }
 
 @objc(PVIMailView)
-public class PVIMailView: UIView {
-    let before = BorderView()
-    let main = BorderView()
-    let after = BorderView()
-    
+public class PVIMailView: PVIView {
     required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder);
+        super.init(coder: aDecoder)
+        base.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+            make.center.equalToSuperview()
+        }
         
         // before
-        self.addSubview(before.view)
+        base.addSubview(before.view)
         before.addRightBorder()
         before.addBottomBorder()
         
@@ -157,7 +178,7 @@ public class PVIMailView: UIView {
         before.view.transform = CGAffineTransform(a: 1, b: CGFloat(M_PI) * -2 / 18, c: CGFloat(M_PI) * -1 / 18, d: 1, tx: 0, ty: 0).concatenating(CGAffineTransform(rotationAngle: CGFloat(M_PI) * 5 / 18))
         
         // main
-        self.addSubview(main.view)
+        base.addSubview(main.view)
         main.addTopBorder()
         main.addLeftBorder()
         main.addRightBorder()
@@ -175,30 +196,17 @@ public class PVIMailView: UIView {
         setLine(.white)
         self.backgroundColor = UIColor.red
     }
-    
-    func setLine(_ color: UIColor) {
-        before.set(color: color)
-        main.set(color: color)
-        after.set(color: color)
-    }
 }
 
 @objc(PVIRssView)
-public class PVIRssView: UIView {
-    let base = UIView()
-    let before = BorderView()
-    let main = BorderView()
-    let after = BorderView()
-    
+public class PVIRssView: PVIView {
     required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder);
-        self.addSubview(base)
+        super.init(coder: aDecoder)
         base.snp.makeConstraints { (make) in
             make.width.equalToSuperview().multipliedBy(22 / 34.0)
             make.height.equalToSuperview().multipliedBy(22 / 34.0)
             make.center.equalToSuperview()
         }
-        base.clipsToBounds = true
         
         // before
         base.addSubview(before.view)
@@ -209,9 +217,6 @@ public class PVIRssView: UIView {
             make.bottom.equalToSuperview()
             make.left.equalToSuperview()
         }
-        before.view.layer.borderWidth = 3
-        before.view.layer.borderColor = UIColor.white.cgColor
-        before.view.layer.cornerRadius = 3
         
         // main
         base.addSubview(main.view)
@@ -223,10 +228,6 @@ public class PVIRssView: UIView {
             make.height.equalToSuperview().multipliedBy(26 / 22.0)
         }
         
-        main.view.layer.borderWidth = 2.0
-        main.view.layer.borderColor = UIColor.white.cgColor
-        main.view.layer.cornerRadius = 13
-        
         // after
         base.addSubview(after.view)
         
@@ -237,17 +238,20 @@ public class PVIRssView: UIView {
             make.height.equalToSuperview().multipliedBy(2)
         }
         
-        after.view.layer.borderWidth = 2.0
-        after.view.layer.borderColor = UIColor.white.cgColor
-        after.view.layer.cornerRadius = 22
-        
         setLine(.white)
         self.backgroundColor = UIColor.red
     }
     
-    func setLine(_ color: UIColor) {
-        before.set(color: color)
-        main.set(color: color)
-        after.set(color: color)
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        before.view.layer.borderWidth = self.frame.width * 3 / 34
+        before.view.layer.cornerRadius = self.frame.width * 3 / 34
+        
+        main.view.layer.borderWidth = self.frame.width * 2.0 / 34
+        main.view.layer.cornerRadius = self.frame.width * 13 / 34
+        
+        after.view.layer.borderWidth = self.frame.width * 2 / 34
+        after.view.layer.cornerRadius = self.frame.width * 22 / 34
     }
 }
