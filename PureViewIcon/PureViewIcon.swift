@@ -133,13 +133,11 @@ public class PVIHomeView: UIView {
     }
 }
 
-
 @objc(PVIMailView)
 public class PVIMailView: UIView {
     let before = BorderView()
     let main = BorderView()
     let after = BorderView()
-    
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
@@ -173,6 +171,75 @@ public class PVIMailView: UIView {
         }
         
         // after
+
+        setLine(.white)
+        self.backgroundColor = UIColor.red
+    }
+    
+    func setLine(_ color: UIColor) {
+        before.set(color: color)
+        main.set(color: color)
+        after.set(color: color)
+    }
+}
+
+@objc(PVIRssView)
+public class PVIRssView: UIView {
+    let base = UIView()
+    let before = BorderView()
+    let main = BorderView()
+    let after = BorderView()
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder);
+        self.addSubview(base)
+        base.snp.makeConstraints { (make) in
+            make.width.equalToSuperview().multipliedBy(22 / 34.0)
+            make.height.equalToSuperview().multipliedBy(22 / 34.0)
+            make.center.equalToSuperview()
+        }
+        base.clipsToBounds = true
+        
+        // before
+        base.addSubview(before.view)
+        
+        before.view.snp.makeConstraints { (make) in
+            make.width.equalToSuperview().multipliedBy(6 / 22.0)
+            make.height.equalToSuperview().multipliedBy(6 / 22.0)
+            make.bottom.equalToSuperview()
+            make.left.equalToSuperview()
+        }
+        before.view.layer.borderWidth = 3
+        before.view.layer.borderColor = UIColor.white.cgColor
+        before.view.layer.cornerRadius = 3
+        
+        // main
+        base.addSubview(main.view)
+        
+        main.view.snp.makeConstraints { [weak base] (make) in
+            make.centerX.equalToSuperview().multipliedBy(3 / 22.0)
+            make.centerY.equalToSuperview().multipliedBy(41 / 22.0)
+            make.width.equalToSuperview().multipliedBy(26 / 22.0)
+            make.height.equalToSuperview().multipliedBy(26 / 22.0)
+        }
+        
+        main.view.layer.borderWidth = 2.0
+        main.view.layer.borderColor = UIColor.white.cgColor
+        main.view.layer.cornerRadius = 13
+        
+        // after
+        base.addSubview(after.view)
+        
+        after.view.snp.makeConstraints { [weak base] (make) in
+            make.centerX.equalTo(base!.snp.left)
+            make.centerY.equalTo(base!.snp.bottom)
+            make.width.equalToSuperview().multipliedBy(2)
+            make.height.equalToSuperview().multipliedBy(2)
+        }
+        
+        after.view.layer.borderWidth = 2.0
+        after.view.layer.borderColor = UIColor.white.cgColor
+        after.view.layer.cornerRadius = 22
         
         setLine(.white)
         self.backgroundColor = UIColor.red

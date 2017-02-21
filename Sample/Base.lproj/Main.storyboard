@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,7 +46,7 @@
                                 </constraints>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PVIMailViewCell" id="rgJ-ZW-X1c">
-                                <rect key="frame" x="49" y="0.0" width="34" height="34"/>
+                                <rect key="frame" x="48.5" y="0.0" width="34" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
@@ -64,6 +65,37 @@
                                     <constraint firstItem="PQq-Yf-jaA" firstAttribute="leading" secondItem="rgJ-ZW-X1c" secondAttribute="leading" id="ak0-wJ-FiM"/>
                                 </constraints>
                             </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PVIRssViewCell" id="mLM-aa-5M7">
+                                <rect key="frame" x="97.5" y="0.0" width="34" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gD5-ht-xL7" customClass="PVIRssView">
+                                            <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNX-Lo-Ej4">
+                                                    <rect key="frame" x="-17" y="17" width="34" height="34"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="mNX-Lo-Ej4" firstAttribute="centerY" secondItem="gD5-ht-xL7" secondAttribute="bottom" id="NiP-tO-RBl"/>
+                                                <constraint firstItem="mNX-Lo-Ej4" firstAttribute="width" secondItem="gD5-ht-xL7" secondAttribute="width" id="cdT-3R-6m1"/>
+                                                <constraint firstItem="mNX-Lo-Ej4" firstAttribute="height" secondItem="gD5-ht-xL7" secondAttribute="height" id="dJJ-5m-MgS"/>
+                                                <constraint firstItem="mNX-Lo-Ej4" firstAttribute="centerX" secondItem="gD5-ht-xL7" secondAttribute="leading" id="srP-nn-pKX"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="gD5-ht-xL7" secondAttribute="trailing" id="HMM-XY-yKG"/>
+                                    <constraint firstAttribute="bottom" secondItem="gD5-ht-xL7" secondAttribute="bottom" id="Y2u-tQ-LRp"/>
+                                    <constraint firstItem="gD5-ht-xL7" firstAttribute="leading" secondItem="mLM-aa-5M7" secondAttribute="leading" id="cg7-o9-1ai"/>
+                                    <constraint firstItem="gD5-ht-xL7" firstAttribute="top" secondItem="mLM-aa-5M7" secondAttribute="top" id="wjN-wm-xep"/>
+                                </constraints>
+                            </collectionViewCell>
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="vNy-Xv-gqC" id="o5Z-Ri-eAf"/>
@@ -73,7 +105,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qcx-5D-lyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="491.5" y="294.5"/>
+            <point key="canvasLocation" x="470" y="301"/>
         </scene>
     </scenes>
 </document>

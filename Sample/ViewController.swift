@@ -13,6 +13,7 @@ class ViewController: UICollectionViewController {
     let iconIden: [String] = [
         "PVIHomeViewCell",
         "PVIMailViewCell",
+        "PVIRssViewCell",
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
