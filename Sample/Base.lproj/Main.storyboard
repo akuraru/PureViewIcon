@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vNy-Xv-gqC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6YS-oN-7TL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,101 +11,143 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="fqA-Ee-gkr">
+        <scene sceneID="0Ru-SO-in6">
             <objects>
-                <collectionViewController id="vNy-Xv-gqC" customClass="ViewController" customModule="Sample" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="LLs-BT-vn3">
+                <viewController id="6YS-oN-7TL" customClass="ViewController" customModule="Sample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xXQ-zH-ov6"/>
+                        <viewControllerLayoutGuide type="bottom" id="DZa-C9-jBP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="45P-uv-YM4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hp8-11-YBn">
-                            <size key="itemSize" width="34" height="34"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PVIHomeViewCell" id="RYD-8I-adU">
-                                <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIt-KF-t9X" customClass="PVIHomeView">
-                                            <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </subviews>
-                                </view>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMe-u2-GHh">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="34" minValue="0.0" maxValue="375" translatesAutoresizingMaskIntoConstraints="NO" id="EwT-a1-Dc1">
+                                        <rect key="frame" x="18" y="0.0" width="339" height="45"/>
+                                        <connections>
+                                            <action selector="changeSlider:" destination="6YS-oN-7TL" eventType="valueChanged" id="D6z-1E-M0N"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="yIt-KF-t9X" firstAttribute="leading" secondItem="RYD-8I-adU" secondAttribute="leading" id="0oO-Ju-85Y"/>
-                                    <constraint firstAttribute="bottom" secondItem="yIt-KF-t9X" secondAttribute="bottom" id="L5K-d7-kcx"/>
-                                    <constraint firstAttribute="trailing" secondItem="yIt-KF-t9X" secondAttribute="trailing" id="fBE-5e-wKK"/>
-                                    <constraint firstItem="yIt-KF-t9X" firstAttribute="top" secondItem="RYD-8I-adU" secondAttribute="top" id="gKn-ij-weR"/>
+                                    <constraint firstItem="EwT-a1-Dc1" firstAttribute="top" secondItem="sMe-u2-GHh" secondAttribute="top" id="9N5-wA-dcL"/>
+                                    <constraint firstAttribute="height" constant="44" id="Isg-wI-Nqa"/>
+                                    <constraint firstItem="EwT-a1-Dc1" firstAttribute="leading" secondItem="sMe-u2-GHh" secondAttribute="leading" constant="20" id="T9J-ab-LFE"/>
+                                    <constraint firstAttribute="bottom" secondItem="EwT-a1-Dc1" secondAttribute="bottom" id="cSm-dm-Ow6"/>
+                                    <constraint firstAttribute="trailing" secondItem="EwT-a1-Dc1" secondAttribute="trailing" constant="20" id="gtA-4c-EvH"/>
                                 </constraints>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PVIMailViewCell" id="rgJ-ZW-X1c">
-                                <rect key="frame" x="48.5" y="0.0" width="34" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQq-Yf-jaA" customClass="PVIMailView">
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LLs-BT-vn3">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="hp8-11-YBn">
+                                    <size key="itemSize" width="34" height="34"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PVIHomeViewCell" id="RYD-8I-adU">
+                                        <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="PQq-Yf-jaA" secondAttribute="trailing" id="AlI-j6-ZA8"/>
-                                    <constraint firstItem="PQq-Yf-jaA" firstAttribute="top" secondItem="rgJ-ZW-X1c" secondAttribute="top" id="CBr-9W-XNV"/>
-                                    <constraint firstAttribute="bottom" secondItem="PQq-Yf-jaA" secondAttribute="bottom" id="Hg3-Kk-fia"/>
-                                    <constraint firstItem="PQq-Yf-jaA" firstAttribute="leading" secondItem="rgJ-ZW-X1c" secondAttribute="leading" id="ak0-wJ-FiM"/>
-                                </constraints>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PVIRssViewCell" id="mLM-aa-5M7">
-                                <rect key="frame" x="97.5" y="0.0" width="34" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gD5-ht-xL7" customClass="PVIRssView">
-                                            <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNX-Lo-Ej4">
-                                                    <rect key="frame" x="-17" y="17" width="34" height="34"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIt-KF-t9X" customClass="PVIHomeView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="mNX-Lo-Ej4" firstAttribute="centerY" secondItem="gD5-ht-xL7" secondAttribute="bottom" id="NiP-tO-RBl"/>
-                                                <constraint firstItem="mNX-Lo-Ej4" firstAttribute="width" secondItem="gD5-ht-xL7" secondAttribute="width" id="cdT-3R-6m1"/>
-                                                <constraint firstItem="mNX-Lo-Ej4" firstAttribute="height" secondItem="gD5-ht-xL7" secondAttribute="height" id="dJJ-5m-MgS"/>
-                                                <constraint firstItem="mNX-Lo-Ej4" firstAttribute="centerX" secondItem="gD5-ht-xL7" secondAttribute="leading" id="srP-nn-pKX"/>
-                                            </constraints>
                                         </view>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="gD5-ht-xL7" secondAttribute="trailing" id="HMM-XY-yKG"/>
-                                    <constraint firstAttribute="bottom" secondItem="gD5-ht-xL7" secondAttribute="bottom" id="Y2u-tQ-LRp"/>
-                                    <constraint firstItem="gD5-ht-xL7" firstAttribute="leading" secondItem="mLM-aa-5M7" secondAttribute="leading" id="cg7-o9-1ai"/>
-                                    <constraint firstItem="gD5-ht-xL7" firstAttribute="top" secondItem="mLM-aa-5M7" secondAttribute="top" id="wjN-wm-xep"/>
-                                </constraints>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="vNy-Xv-gqC" id="o5Z-Ri-eAf"/>
-                            <outlet property="delegate" destination="vNy-Xv-gqC" id="RG0-fw-QAB"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qcx-5D-lyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                                        <constraints>
+                                            <constraint firstItem="yIt-KF-t9X" firstAttribute="leading" secondItem="RYD-8I-adU" secondAttribute="leading" id="0oO-Ju-85Y"/>
+                                            <constraint firstAttribute="bottom" secondItem="yIt-KF-t9X" secondAttribute="bottom" id="L5K-d7-kcx"/>
+                                            <constraint firstAttribute="trailing" secondItem="yIt-KF-t9X" secondAttribute="trailing" id="fBE-5e-wKK"/>
+                                            <constraint firstItem="yIt-KF-t9X" firstAttribute="top" secondItem="RYD-8I-adU" secondAttribute="top" id="gKn-ij-weR"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PVIMailViewCell" id="rgJ-ZW-X1c">
+                                        <rect key="frame" x="34" y="0.0" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQq-Yf-jaA" customClass="PVIMailView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="PQq-Yf-jaA" secondAttribute="trailing" id="AlI-j6-ZA8"/>
+                                            <constraint firstItem="PQq-Yf-jaA" firstAttribute="top" secondItem="rgJ-ZW-X1c" secondAttribute="top" id="CBr-9W-XNV"/>
+                                            <constraint firstAttribute="bottom" secondItem="PQq-Yf-jaA" secondAttribute="bottom" id="Hg3-Kk-fia"/>
+                                            <constraint firstItem="PQq-Yf-jaA" firstAttribute="leading" secondItem="rgJ-ZW-X1c" secondAttribute="leading" id="ak0-wJ-FiM"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PVIRssViewCell" id="mLM-aa-5M7">
+                                        <rect key="frame" x="68" y="0.0" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gD5-ht-xL7" customClass="PVIRssView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNX-Lo-Ej4">
+                                                            <rect key="frame" x="-17" y="17" width="34" height="34"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="mNX-Lo-Ej4" firstAttribute="centerY" secondItem="gD5-ht-xL7" secondAttribute="bottom" id="NiP-tO-RBl"/>
+                                                        <constraint firstItem="mNX-Lo-Ej4" firstAttribute="width" secondItem="gD5-ht-xL7" secondAttribute="width" id="cdT-3R-6m1"/>
+                                                        <constraint firstItem="mNX-Lo-Ej4" firstAttribute="height" secondItem="gD5-ht-xL7" secondAttribute="height" id="dJJ-5m-MgS"/>
+                                                        <constraint firstItem="mNX-Lo-Ej4" firstAttribute="centerX" secondItem="gD5-ht-xL7" secondAttribute="leading" id="srP-nn-pKX"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="gD5-ht-xL7" secondAttribute="trailing" id="HMM-XY-yKG"/>
+                                            <constraint firstAttribute="bottom" secondItem="gD5-ht-xL7" secondAttribute="bottom" id="Y2u-tQ-LRp"/>
+                                            <constraint firstItem="gD5-ht-xL7" firstAttribute="leading" secondItem="mLM-aa-5M7" secondAttribute="leading" id="cg7-o9-1ai"/>
+                                            <constraint firstItem="gD5-ht-xL7" firstAttribute="top" secondItem="mLM-aa-5M7" secondAttribute="top" id="wjN-wm-xep"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="6YS-oN-7TL" id="ptr-zx-aL6"/>
+                                    <outlet property="delegate" destination="6YS-oN-7TL" id="Ap0-SS-OAK"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LLs-BT-vn3" firstAttribute="top" secondItem="sMe-u2-GHh" secondAttribute="bottom" id="A8J-gO-HpI"/>
+                            <constraint firstItem="LLs-BT-vn3" firstAttribute="leading" secondItem="45P-uv-YM4" secondAttribute="leading" id="HGn-Fb-wLw"/>
+                            <constraint firstAttribute="trailing" secondItem="sMe-u2-GHh" secondAttribute="trailing" id="K8v-zB-hyo"/>
+                            <constraint firstAttribute="trailing" secondItem="LLs-BT-vn3" secondAttribute="trailing" id="UaX-en-8Vj"/>
+                            <constraint firstItem="sMe-u2-GHh" firstAttribute="top" secondItem="xXQ-zH-ov6" secondAttribute="bottom" id="aTu-FV-Rgf"/>
+                            <constraint firstAttribute="bottom" secondItem="LLs-BT-vn3" secondAttribute="bottom" id="fCN-ar-Bpb"/>
+                            <constraint firstItem="sMe-u2-GHh" firstAttribute="leading" secondItem="45P-uv-YM4" secondAttribute="leading" id="fiu-Q0-nNp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="LLs-BT-vn3" id="h1M-03-ctH"/>
+                        <outlet property="slider" destination="EwT-a1-Dc1" id="XZH-Go-x2O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ih-6S-Q2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="470" y="301"/>
+            <point key="canvasLocation" x="784.79999999999995" y="314.39280359820094"/>
         </scene>
     </scenes>
 </document>
