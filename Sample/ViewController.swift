@@ -18,6 +18,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         "PVIHomeViewCell",
         "PVIMailViewCell",
         "PVIRssViewCell",
+        "PVIHamburgerViewCell",
     ]
     override func viewDidLoad() {
         super.viewDidLoad()

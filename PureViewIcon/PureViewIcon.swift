@@ -255,3 +255,42 @@ public class PVIRssView: PVIView {
         after.view.layer.cornerRadius = self.frame.width * 22 / 34
     }
 }
+
+
+@objc(PVIHamburgerView)
+public class PVIHamburgerView: PVIView {
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        base.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+            make.center.equalToSuperview()
+        }
+        
+        // before
+        base.addSubview(before.view)
+        before.addTopBorder()
+        
+        before.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(20 / 34.0)
+            make.height.equalToSuperview().multipliedBy(2 / 34.0)
+        }
+        
+        // main
+        base.addSubview(main.view)
+        main.addTopBorder()
+        main.addBottomBorder()
+        
+        main.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(20 / 34.0)
+            make.height.equalToSuperview().multipliedBy(14 / 34.0)
+        }
+        
+        // after
+        
+        setLine(.white)
+        self.backgroundColor = UIColor.red
+    }
+}

@@ -122,6 +122,37 @@
                                             <constraint firstItem="gD5-ht-xL7" firstAttribute="top" secondItem="mLM-aa-5M7" secondAttribute="top" id="wjN-wm-xep"/>
                                         </constraints>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PVIHamburgerViewCell" id="L3n-WQ-eRg">
+                                        <rect key="frame" x="102" y="0.0" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="br9-UJ-cqo" customClass="PVIHamburgerView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DvD-gX-qQ0">
+                                                            <rect key="frame" x="-17" y="17" width="34" height="34"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="DvD-gX-qQ0" firstAttribute="centerY" secondItem="br9-UJ-cqo" secondAttribute="bottom" id="7zW-V8-qZ6"/>
+                                                        <constraint firstItem="DvD-gX-qQ0" firstAttribute="width" secondItem="br9-UJ-cqo" secondAttribute="width" id="IMb-3K-ilI"/>
+                                                        <constraint firstItem="DvD-gX-qQ0" firstAttribute="centerX" secondItem="br9-UJ-cqo" secondAttribute="leading" id="n5J-uD-cYq"/>
+                                                        <constraint firstItem="DvD-gX-qQ0" firstAttribute="height" secondItem="br9-UJ-cqo" secondAttribute="height" id="seg-Ij-eBJ"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="br9-UJ-cqo" secondAttribute="trailing" id="4KQ-mo-Dzd"/>
+                                            <constraint firstItem="br9-UJ-cqo" firstAttribute="leading" secondItem="L3n-WQ-eRg" secondAttribute="leading" id="69e-np-I7x"/>
+                                            <constraint firstAttribute="bottom" secondItem="br9-UJ-cqo" secondAttribute="bottom" id="QuG-dE-Z93"/>
+                                            <constraint firstItem="br9-UJ-cqo" firstAttribute="top" secondItem="L3n-WQ-eRg" secondAttribute="top" id="z1x-5b-Lj9"/>
+                                        </constraints>
+                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="6YS-oN-7TL" id="ptr-zx-aL6"/>
