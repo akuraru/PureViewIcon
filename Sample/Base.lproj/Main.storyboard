@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -58,9 +57,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIt-KF-t9X" customClass="PVIHomeView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIt-KF-t9X" customClass="PVIView">
                                                     <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                         </view>
@@ -78,9 +82,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQq-Yf-jaA" customClass="PVIMailView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQq-Yf-jaA" customClass="PVIView">
                                                     <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                                            <integer key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                         </view>
@@ -98,20 +107,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gD5-ht-xL7" customClass="PVIRssView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gD5-ht-xL7" customClass="PVIView">
                                                     <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNX-Lo-Ej4">
-                                                            <rect key="frame" x="-17" y="17" width="34" height="34"/>
-                                                        </view>
-                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstItem="mNX-Lo-Ej4" firstAttribute="centerY" secondItem="gD5-ht-xL7" secondAttribute="bottom" id="NiP-tO-RBl"/>
-                                                        <constraint firstItem="mNX-Lo-Ej4" firstAttribute="width" secondItem="gD5-ht-xL7" secondAttribute="width" id="cdT-3R-6m1"/>
-                                                        <constraint firstItem="mNX-Lo-Ej4" firstAttribute="height" secondItem="gD5-ht-xL7" secondAttribute="height" id="dJJ-5m-MgS"/>
-                                                        <constraint firstItem="mNX-Lo-Ej4" firstAttribute="centerX" secondItem="gD5-ht-xL7" secondAttribute="leading" id="srP-nn-pKX"/>
-                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                                            <integer key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                         </view>
@@ -129,20 +132,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="br9-UJ-cqo" customClass="PVIHamburgerView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="br9-UJ-cqo" customClass="PVIView">
                                                     <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DvD-gX-qQ0">
-                                                            <rect key="frame" x="-17" y="17" width="34" height="34"/>
-                                                        </view>
-                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstItem="DvD-gX-qQ0" firstAttribute="centerY" secondItem="br9-UJ-cqo" secondAttribute="bottom" id="7zW-V8-qZ6"/>
-                                                        <constraint firstItem="DvD-gX-qQ0" firstAttribute="width" secondItem="br9-UJ-cqo" secondAttribute="width" id="IMb-3K-ilI"/>
-                                                        <constraint firstItem="DvD-gX-qQ0" firstAttribute="centerX" secondItem="br9-UJ-cqo" secondAttribute="leading" id="n5J-uD-cYq"/>
-                                                        <constraint firstItem="DvD-gX-qQ0" firstAttribute="height" secondItem="br9-UJ-cqo" secondAttribute="height" id="seg-Ij-eBJ"/>
-                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                                            <integer key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                         </view>
