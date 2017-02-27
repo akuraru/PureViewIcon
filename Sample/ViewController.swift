@@ -9,36 +9,28 @@
 import UIKit
 import PureViewIcon
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ViewController: UIViewController {
     @IBOutlet weak var slider: UISlider!
-    @IBOutlet weak var collectionView: UICollectionView!
-    var size = CGSize(width: 34, height: 34)
-    
+    weak var viewController: CollectionViewController!
+
     let iconIden: [String] = [
         "PVIHomeViewCell",
         "PVIMailViewCell",
         "PVIRssViewCell",
         "PVIHamburgerViewCell",
     ]
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     @IBAction func changeSlider(_ sender: Any) {
         let value = CGFloat(self.slider.value)
-        size = CGSize(width: value, height: value)
-        collectionView.reloadData()
+        viewController.size = CGSize(width: value, height: value)
+        viewController.collectionView.reloadData()
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return size
-    }
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return iconIden.count
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: iconIden[indexPath.row], for: indexPath)
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "collection" {
+            if let controller = segue.destination as? CollectionViewController {
+                viewController = controller
+            }
+        }
     }
 }
 

@@ -39,16 +39,16 @@ class BorderView {
     func set(width: CGFloat) {
         self.width = width
         
-        top.snp.updateConstraints { [weak self] (make) in
+        top.snp.remakeConstraints { [weak self] (make) in
             make.height.equalTo(self!.view.superview!).multipliedBy(self!.width / 34)
         }
-        left.snp.updateConstraints { [weak self] (make) in
+        left.snp.remakeConstraints { [weak self] (make) in
             make.width.equalTo(self!.view.superview!).multipliedBy(self!.width / 34)
         }
-        right.snp.updateConstraints { [weak self] (make) in
+        right.snp.remakeConstraints { [weak self] (make) in
             make.width.equalTo(self!.view.superview!).multipliedBy(self!.width / 34)
         }
-        bottom.snp.updateConstraints { [weak self] (make) in
+        bottom.snp.remakeConstraints { [weak self] (make) in
             make.height.equalTo(self!.view.superview!).multipliedBy(self!.width / 34)
         }
     }
@@ -105,18 +105,25 @@ public class PVIView: UIView {
     let after = BorderView()
     @IBInspectable public var type: Int = 0
     
+    public func set(type: Int) {
+        self.type = type
+        makeConstraints()
+    }
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     
         self.addSubview(base)
+        base.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+            make.center.equalToSuperview()
+        }
         base.clipsToBounds = true
         
         base.addSubview(before.view)
-        before.setup()
         base.addSubview(main.view)
-        main.setup()
         base.addSubview(after.view)
-        after.setup()
     }
     
     override public func awakeFromNib() {
@@ -134,6 +141,11 @@ public class PVIView: UIView {
         after.view.layer.borderColor = color.cgColor
     }
     func makeConstraints() {
+        base.snp.removeConstraints()
+        before.view.snp.removeConstraints()
+        main.view.snp.removeConstraints()
+        after.view.snp.removeConstraints()
+        
         switch PVIViewType(rawValue: type)! {
         case.none:
             return
@@ -146,19 +158,23 @@ public class PVIView: UIView {
         case .hamburger:
             makeHamburgerConstraints()
         }
+        layoutSubviews()
     }
     func makeHomeConstraints() {
-        base.snp.makeConstraints { (make) in
+        base.snp.updateConstraints { (make) in
             make.width.equalToSuperview()
             make.height.equalToSuperview()
             make.center.equalToSuperview()
         }
+        before.setup()
+        main.setup()
+        after.setup()
         
         // before
-        before.top.isHidden = false
-        before.left.isHidden = false
-        before.right.isHidden = true
-        before.bottom.isHidden = true
+        before.top.alpha = 1
+        before.left.alpha = 1
+        before.right.alpha = 0
+        before.bottom.alpha = 0
         
         before.view.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
@@ -169,10 +185,10 @@ public class PVIView: UIView {
         before.view.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
         
         // main
-        main.top.isHidden = true
-        main.left.isHidden = false
-        main.right.isHidden = false
-        main.bottom.isHidden = false
+        main.top.alpha = 0
+        main.left.alpha = 1
+        main.right.alpha = 1
+        main.bottom.alpha = 1
         
         main.view.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
@@ -180,13 +196,14 @@ public class PVIView: UIView {
             make.width.equalToSuperview().multipliedBy(22 / 34.0)
             make.height.equalToSuperview().multipliedBy(18 / 34.0)
         }
+        main.view.transform = resetTransform()
         
         // after
         after.width = 1
-        after.top.isHidden = false
-        after.left.isHidden = false
-        after.right.isHidden = false
-        after.bottom.isHidden = true
+        after.top.alpha = 1
+        after.left.alpha = 1
+        after.right.alpha = 1
+        after.bottom.alpha = 0
         
         after.view.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
@@ -194,23 +211,26 @@ public class PVIView: UIView {
             make.width.equalToSuperview().multipliedBy(8 / 34.0)
             make.height.equalToSuperview().multipliedBy(13 / 34.0)
         }
+        after.view.transform = resetTransform()
         
         setLine(.white)
         self.backgroundColor = UIColor.red
     }
     func makeMailConstraints() {
-        super.awakeFromNib()
-        base.snp.makeConstraints { (make) in
+        base.snp.updateConstraints { (make) in
             make.width.equalToSuperview()
             make.height.equalToSuperview()
             make.center.equalToSuperview()
         }
+        before.setup()
+        main.setup()
+        after.setup()
         
         // before
-        before.top.isHidden = true
-        before.left.isHidden = true
-        before.right.isHidden = false
-        before.bottom.isHidden = false
+        before.top.alpha = 0
+        before.left.alpha = 0
+        before.right.alpha = 1
+        before.bottom.alpha = 1
         
         before.view.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
@@ -218,14 +238,15 @@ public class PVIView: UIView {
             make.width.equalToSuperview().multipliedBy(15.5 / 34.0)
             make.height.equalToSuperview().multipliedBy(15.5 / 34.0)
         }
-        
+        before.view.transform = resetTransform()
+
         before.view.transform = CGAffineTransform(a: 1, b: CGFloat(M_PI) * -2 / 18, c: CGFloat(M_PI) * -1 / 18, d: 1, tx: 0, ty: 0).concatenating(CGAffineTransform(rotationAngle: CGFloat(M_PI) * 5 / 18))
         
         // main
-        main.top.isHidden = false
-        main.left.isHidden = false
-        main.right.isHidden = false
-        main.bottom.isHidden = false
+        main.top.alpha = 1
+        main.left.alpha = 1
+        main.right.alpha = 1
+        main.bottom.alpha = 1
         
         main.view.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
@@ -233,30 +254,35 @@ public class PVIView: UIView {
             make.width.equalToSuperview().multipliedBy(28 / 34.0)
             make.height.equalToSuperview().multipliedBy(18 / 34.0)
         }
+        main.view.transform = resetTransform()
         
         // after
-        after.top.isHidden = false
-        after.left.isHidden = false
-        after.right.isHidden = false
-        after.bottom.isHidden = false
+        after.top.alpha = 1
+        after.left.alpha = 1
+        after.right.alpha = 1
+        after.bottom.alpha = 1
+        
+        after.view.transform = resetTransform()
 
         setLine(.white)
         self.backgroundColor = UIColor.red
     }
     
     func makeRssConstraints() {
-        super.awakeFromNib()
         base.snp.makeConstraints { (make) in
             make.width.equalToSuperview().multipliedBy(22 / 34.0)
             make.height.equalToSuperview().multipliedBy(22 / 34.0)
             make.center.equalToSuperview()
         }
+        before.setup()
+        main.setup()
+        after.setup()
         
         // before
-        before.top.isHidden = true
-        before.left.isHidden = true
-        before.right.isHidden = true
-        before.bottom.isHidden = true
+        before.top.alpha = 0
+        before.left.alpha = 0
+        before.right.alpha = 0
+        before.bottom.alpha = 0
         
         before.view.snp.makeConstraints { (make) in
             make.width.equalToSuperview().multipliedBy(6 / 22.0)
@@ -264,12 +290,13 @@ public class PVIView: UIView {
             make.bottom.equalToSuperview()
             make.left.equalToSuperview()
         }
+        before.view.transform = resetTransform()
         
         // main
-        main.top.isHidden = true
-        main.left.isHidden = true
-        main.right.isHidden = true
-        main.bottom.isHidden = true
+        main.top.alpha = 0
+        main.left.alpha = 0
+        main.right.alpha = 0
+        main.bottom.alpha = 0
         
         main.view.snp.makeConstraints { [weak base] (make) in
             make.centerX.equalToSuperview().multipliedBy(3 / 22.0)
@@ -277,12 +304,13 @@ public class PVIView: UIView {
             make.width.equalToSuperview().multipliedBy(26 / 22.0)
             make.height.equalToSuperview().multipliedBy(26 / 22.0)
         }
+        main.view.transform = resetTransform()
         
         // after
-        after.top.isHidden = true
-        after.left.isHidden = true
-        after.right.isHidden = true
-        after.bottom.isHidden = true
+        after.top.alpha = 0
+        after.left.alpha = 0
+        after.right.alpha = 0
+        after.bottom.alpha = 0
         
         after.view.snp.makeConstraints { [weak base] (make) in
             make.centerX.equalTo(base!.snp.left)
@@ -290,70 +318,86 @@ public class PVIView: UIView {
             make.width.equalToSuperview().multipliedBy(2)
             make.height.equalToSuperview().multipliedBy(2)
         }
+        after.view.transform = resetTransform()
         
         setLine(.white)
         self.backgroundColor = UIColor.red
     }
     
     func makeHamburgerConstraints() {
-        super.awakeFromNib()
         base.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
             make.height.equalToSuperview()
             make.center.equalToSuperview()
         }
+        before.setup()
+        main.setup()
+        after.setup()
         
         // before
-        before.top.isHidden = false
-        before.left.isHidden = true
-        before.right.isHidden = true
-        before.bottom.isHidden = true
+        before.top.alpha = 1
+        before.left.alpha = 0
+        before.right.alpha = 0
+        before.bottom.alpha = 0
         
         before.view.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(20 / 34.0)
             make.height.equalToSuperview().multipliedBy(2 / 34.0)
         }
+        before.view.transform = resetTransform()
         
         // main
-        main.top.isHidden = false
-        main.left.isHidden = true
-        main.right.isHidden = true
-        main.bottom.isHidden = false
+        main.top.alpha = 1
+        main.left.alpha = 0
+        main.right.alpha = 0
+        main.bottom.alpha = 1
         
         main.view.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(20 / 34.0)
             make.height.equalToSuperview().multipliedBy(14 / 34.0)
         }
+        main.view.transform = resetTransform()
         
         // after
-        after.top.isHidden = true
-        after.left.isHidden = true
-        after.right.isHidden = true
-        after.bottom.isHidden = true
+        after.top.alpha = 0
+        after.left.alpha = 0
+        after.right.alpha = 0
+        after.bottom.alpha = 0
+        
+        after.view.transform = resetTransform()
         
         setLine(.white)
         self.backgroundColor = UIColor.red
     }
     
     public override func layoutSubviews() {
+        super.layoutSubviews()
         switch PVIViewType(rawValue: type)! {
         case .none:
-            return
+            resetLayoutSubviews()
         case .home:
-            return
+            resetLayoutSubviews()
         case .mail:
-            return
+            resetLayoutSubviews()
         case .rss:
             rssLayoutSubview()
         case .hamburger:
-            return
+            resetLayoutSubviews()
         }
     }
-    func rssLayoutSubview() {
-        super.layoutSubviews()
+    func resetLayoutSubviews() {
+        before.view.layer.borderWidth = 0
+        before.view.layer.cornerRadius = 0
         
+        main.view.layer.borderWidth = 0
+        main.view.layer.cornerRadius = 0
+        
+        after.view.layer.borderWidth = 0
+        after.view.layer.cornerRadius = 0
+    }
+    func rssLayoutSubview() {
         before.view.layer.borderWidth = self.frame.width * 3 / 34
         before.view.layer.cornerRadius = self.frame.width * 3 / 34
         
@@ -362,5 +406,8 @@ public class PVIView: UIView {
         
         after.view.layer.borderWidth = self.frame.width * 2 / 34
         after.view.layer.cornerRadius = self.frame.width * 22 / 34
+    }
+    func resetTransform() -> CGAffineTransform {
+        return CGAffineTransform(a: 1, b: 0, c: 0, d: 1, tx: 0, ty: 0)
     }
 }
