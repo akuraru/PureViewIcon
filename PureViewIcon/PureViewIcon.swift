@@ -94,7 +94,7 @@ class BorderView {
 }
 
 public enum PVIViewType: Int {
-    case none, home, mail, rss, hamburger, plus, cross
+    case none, home, mail, rss, hamburger, plus, cross, check
 }
 
 @objc(PVIView)
@@ -104,6 +104,7 @@ public class PVIView: UIView {
     let main = BorderView()
     let after = BorderView()
     @IBInspectable public var type: Int = 0
+    @IBInspectable public var lineColor: UIColor = .black
     
     public func set(type: Int) {
         self.type = type
@@ -127,11 +128,12 @@ public class PVIView: UIView {
     }
     
     override public func awakeFromNib() {
+        setLine(lineColor)
         super.awakeFromNib()
         makeConstraints()
     }
     
-    func setLine(_ color: UIColor) {
+    public func setLine(_ color: UIColor) {
         before.set(color: color)
         main.set(color: color)
         after.set(color: color)
@@ -161,6 +163,8 @@ public class PVIView: UIView {
             makePlusConstraints()
         case .cross:
             makeCrossConstraints()
+        case .check:
+            makeCheckConstraints()
         }
         layoutSubviews()
     }
@@ -218,9 +222,6 @@ public class PVIView: UIView {
             make.height.equalToSuperview().multipliedBy(13 / 34.0)
         }
         after.view.transform = resetTransform()
-        
-        setLine(.white)
-        self.backgroundColor = UIColor.red
     }
     func makeMailConstraints() {
         base.snp.updateConstraints { (make) in
@@ -276,9 +277,6 @@ public class PVIView: UIView {
         }
         
         after.view.transform = resetTransform()
-
-        setLine(.white)
-        self.backgroundColor = UIColor.red
     }
     
     func makeRssConstraints() {
@@ -334,9 +332,6 @@ public class PVIView: UIView {
             make.height.equalToSuperview().multipliedBy(2)
         }
         after.view.transform = resetTransform()
-        
-        setLine(.white)
-        self.backgroundColor = UIColor.red
     }
     
     func makeHamburgerConstraints() {
@@ -384,9 +379,6 @@ public class PVIView: UIView {
         after.bottom.alpha = 0
         
         after.view.transform = resetTransform()
-        
-        setLine(.white)
-        self.backgroundColor = UIColor.red
     }
     
     func makePlusConstraints() {
@@ -434,9 +426,6 @@ public class PVIView: UIView {
         after.bottom.alpha = 0
         
         after.view.transform = resetTransform()
-        
-        setLine(.white)
-        self.backgroundColor = UIColor.red
     }
     
     func makeCrossConstraints() {
@@ -489,9 +478,54 @@ public class PVIView: UIView {
         }
         
         after.view.transform = resetTransform()
+    }
+    func makeCheckConstraints() {
+        base.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+            make.center.equalToSuperview()
+        }
+        base.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_4))
         
-        setLine(.white)
-        self.backgroundColor = UIColor.red
+        before.setup()
+        main.setup()
+        after.setup()
+        
+        // before
+        before.top.alpha = 1
+        before.left.alpha = 0
+        before.right.alpha = 0
+        before.bottom.alpha = 0
+        
+        before.view.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().multipliedBy(22 / 17.0)
+            make.width.equalToSuperview().multipliedBy(20 / 34.0)
+            make.height.equalToSuperview().multipliedBy(2 / 34.0)
+        }
+        before.view.transform = resetTransform()
+        
+        // main
+        main.top.alpha = 0
+        main.left.alpha = 1
+        main.right.alpha = 0
+        main.bottom.alpha = 0
+        
+        main.view.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview().multipliedBy(8 / 17.0)
+            make.centerY.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(2 / 34.0)
+            make.height.equalToSuperview().multipliedBy(12 / 34.0)
+        }
+        main.view.transform = resetTransform()
+        
+        // after
+        after.top.alpha = 0
+        after.left.alpha = 0
+        after.right.alpha = 0
+        after.bottom.alpha = 0
+        
+        after.view.transform = resetTransform()
     }
     
     public override func layoutSubviews() {
@@ -510,6 +544,8 @@ public class PVIView: UIView {
         case .plus:
             resetLayoutSubviews()
         case .cross:
+            resetLayoutSubviews()
+        case .check:
             resetLayoutSubviews()
         }
     }

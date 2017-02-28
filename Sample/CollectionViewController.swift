@@ -20,6 +20,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         "PVIHamburgerViewCell",
         "PVIPlusViewCell",
         "PVICrossViewCell",
+        "PVICheckViewCell",
     ]
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return size
