@@ -94,7 +94,7 @@ class BorderView {
 }
 
 public enum PVIViewType: Int {
-    case none, home, mail, rss, hamburger, plus
+    case none, home, mail, rss, hamburger, plus, cross
 }
 
 @objc(PVIView)
@@ -159,6 +159,8 @@ public class PVIView: UIView {
             makeHamburgerConstraints()
         case .plus:
             makePlusConstraints()
+        case .cross:
+            makeCrossConstraints()
         }
         layoutSubviews()
     }
@@ -168,6 +170,8 @@ public class PVIView: UIView {
             make.height.equalToSuperview()
             make.center.equalToSuperview()
         }
+        base.transform = resetTransform()
+        
         before.setup()
         main.setup()
         after.setup()
@@ -224,6 +228,8 @@ public class PVIView: UIView {
             make.height.equalToSuperview()
             make.center.equalToSuperview()
         }
+        base.transform = resetTransform()
+        
         before.setup()
         main.setup()
         after.setup()
@@ -281,6 +287,8 @@ public class PVIView: UIView {
             make.height.equalToSuperview().multipliedBy(22 / 34.0)
             make.center.equalToSuperview()
         }
+        base.transform = resetTransform()
+        
         before.setup()
         main.setup()
         after.setup()
@@ -337,6 +345,8 @@ public class PVIView: UIView {
             make.height.equalToSuperview()
             make.center.equalToSuperview()
         }
+        base.transform = resetTransform()
+        
         before.setup()
         main.setup()
         after.setup()
@@ -385,6 +395,58 @@ public class PVIView: UIView {
             make.height.equalToSuperview()
             make.center.equalToSuperview()
         }
+        base.transform = resetTransform()
+        
+        before.setup()
+        main.setup()
+        after.setup()
+        
+        // before
+        before.top.alpha = 1
+        before.left.alpha = 0
+        before.right.alpha = 0
+        before.bottom.alpha = 0
+        
+        before.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(20 / 34.0)
+            make.height.equalToSuperview().multipliedBy(2 / 34.0)
+        }
+        before.view.transform = resetTransform()
+        
+        // main
+        main.top.alpha = 0
+        main.left.alpha = 1
+        main.right.alpha = 0
+        main.bottom.alpha = 0
+        
+        main.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(2 / 34.0)
+            make.height.equalToSuperview().multipliedBy(20 / 34.0)
+        }
+        main.view.transform = resetTransform()
+        
+        // after
+        after.top.alpha = 0
+        after.left.alpha = 0
+        after.right.alpha = 0
+        after.bottom.alpha = 0
+        
+        after.view.transform = resetTransform()
+        
+        setLine(.white)
+        self.backgroundColor = UIColor.red
+    }
+    
+    func makeCrossConstraints() {
+        base.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+            make.center.equalToSuperview()
+        }
+        base.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
+        
         before.setup()
         main.setup()
         after.setup()
@@ -446,6 +508,8 @@ public class PVIView: UIView {
         case .hamburger:
             resetLayoutSubviews()
         case .plus:
+            resetLayoutSubviews()
+        case .cross:
             resetLayoutSubviews()
         }
     }
