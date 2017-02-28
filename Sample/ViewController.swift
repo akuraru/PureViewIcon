@@ -13,12 +13,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var slider: UISlider!
     weak var viewController: CollectionViewController!
 
-    let iconIden: [String] = [
-        "PVIHomeViewCell",
-        "PVIMailViewCell",
-        "PVIRssViewCell",
-        "PVIHamburgerViewCell",
-    ]
     @IBAction func changeSlider(_ sender: Any) {
         let value = CGFloat(self.slider.value)
         viewController.size = CGSize(width: value, height: value)

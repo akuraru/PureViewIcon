@@ -327,6 +327,31 @@
                                             <constraint firstItem="br9-UJ-cqo" firstAttribute="top" secondItem="L3n-WQ-eRg" secondAttribute="top" id="z1x-5b-Lj9"/>
                                         </constraints>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PVIPlusViewCell" id="NIG-bF-v4T">
+                                        <rect key="frame" x="252" y="0.0" width="60" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFd-ic-TPZ" customClass="PVIView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="bFd-ic-TPZ" secondAttribute="trailing" id="Iaf-zB-X2i"/>
+                                            <constraint firstAttribute="bottom" secondItem="bFd-ic-TPZ" secondAttribute="bottom" id="J3A-Am-8HU"/>
+                                            <constraint firstItem="bFd-ic-TPZ" firstAttribute="leading" secondItem="NIG-bF-v4T" secondAttribute="leading" id="l4V-S1-vrD"/>
+                                            <constraint firstItem="bFd-ic-TPZ" firstAttribute="top" secondItem="NIG-bF-v4T" secondAttribute="top" id="v5n-G2-udv"/>
+                                        </constraints>
+                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="y3v-iq-orW" id="2vb-BJ-p2W"/>

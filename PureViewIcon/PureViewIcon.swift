@@ -94,7 +94,7 @@ class BorderView {
 }
 
 public enum PVIViewType: Int {
-    case none, home, mail, rss, hamburger
+    case none, home, mail, rss, hamburger, plus
 }
 
 @objc(PVIView)
@@ -157,6 +157,8 @@ public class PVIView: UIView {
             makeRssConstraints()
         case .hamburger:
             makeHamburgerConstraints()
+        case .plus:
+            makePlusConstraints()
         }
         layoutSubviews()
     }
@@ -343,6 +345,54 @@ public class PVIView: UIView {
         before.top.alpha = 1
         before.left.alpha = 0
         before.right.alpha = 0
+        before.bottom.alpha = 1
+        
+        before.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(20 / 34.0)
+            make.height.equalToSuperview().multipliedBy(14 / 34.0)
+        }
+        before.view.transform = resetTransform()
+        
+        // main
+        main.top.alpha = 1
+        main.left.alpha = 0
+        main.right.alpha = 0
+        main.bottom.alpha = 0
+        
+        main.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(20 / 34.0)
+            make.height.equalToSuperview().multipliedBy(2 / 34.0)
+        }
+        main.view.transform = resetTransform()
+        
+        // after
+        after.top.alpha = 0
+        after.left.alpha = 0
+        after.right.alpha = 0
+        after.bottom.alpha = 0
+        
+        after.view.transform = resetTransform()
+        
+        setLine(.white)
+        self.backgroundColor = UIColor.red
+    }
+    
+    func makePlusConstraints() {
+        base.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+            make.center.equalToSuperview()
+        }
+        before.setup()
+        main.setup()
+        after.setup()
+        
+        // before
+        before.top.alpha = 1
+        before.left.alpha = 0
+        before.right.alpha = 0
         before.bottom.alpha = 0
         
         before.view.snp.makeConstraints { (make) in
@@ -353,15 +403,15 @@ public class PVIView: UIView {
         before.view.transform = resetTransform()
         
         // main
-        main.top.alpha = 1
-        main.left.alpha = 0
+        main.top.alpha = 0
+        main.left.alpha = 1
         main.right.alpha = 0
-        main.bottom.alpha = 1
+        main.bottom.alpha = 0
         
         main.view.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(20 / 34.0)
-            make.height.equalToSuperview().multipliedBy(14 / 34.0)
+            make.width.equalToSuperview().multipliedBy(2 / 34.0)
+            make.height.equalToSuperview().multipliedBy(20 / 34.0)
         }
         main.view.transform = resetTransform()
         
@@ -394,6 +444,8 @@ public class PVIView: UIView {
         case .rss:
             rssLayoutSubview()
         case .hamburger:
+            resetLayoutSubviews()
+        case .plus:
             resetLayoutSubviews()
         }
     }

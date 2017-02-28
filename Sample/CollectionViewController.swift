@@ -18,6 +18,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         "PVIMailViewCell",
         "PVIRssViewCell",
         "PVIHamburgerViewCell",
+        "PVIPlusViewCell",
     ]
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return size
