@@ -1,5 +1,8 @@
 # PureViewIcon
 
+![gif1](gif/2017-02-24 10_45_06.gif)
+![gif2](gif/2017-03-01 14_28_04.gif)
+
 ## Proposal
 
 ## Description
