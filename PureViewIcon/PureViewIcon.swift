@@ -93,10 +93,6 @@ class BorderView {
     }
 }
 
-public enum PVIViewType: Int {
-    case none, home, mail, rss, hamburger, plus, cross, check
-}
-
 @objc(PVIView)
 public class PVIView: UIView {
     let base = UIView()
@@ -165,6 +161,8 @@ public class PVIView: UIView {
             makeCrossConstraints()
         case .check:
             makeCheckConstraints()
+        default:
+            break;
         }
         layoutSubviews()
     }
@@ -546,6 +544,8 @@ public class PVIView: UIView {
         case .cross:
             resetLayoutSubviews()
         case .check:
+            resetLayoutSubviews()
+        default:
             resetLayoutSubviews()
         }
     }
