@@ -257,10 +257,15 @@ public class PVIView: UIView {
         main.view.transform = resetTransform()
         
         // after
-        after.top.alpha = 1
-        after.left.alpha = 1
-        after.right.alpha = 1
-        after.bottom.alpha = 1
+        after.top.alpha = 0
+        after.left.alpha = 0
+        after.right.alpha = 0
+        after.bottom.alpha = 0
+        
+        after.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.size.equalTo(0)
+        }
         
         after.view.transform = resetTransform()
 
@@ -365,6 +370,11 @@ public class PVIView: UIView {
         after.left.alpha = 0
         after.right.alpha = 0
         after.bottom.alpha = 0
+        
+        after.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.size.equalTo(0)
+        }
         
         after.view.transform = resetTransform()
         
