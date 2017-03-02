@@ -13,7 +13,6 @@ class BorderView {
     let left = UIView()
     let right = UIView()
     let bottom = UIView()
-    var width: CGFloat = 2
     
     init() {
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +21,7 @@ class BorderView {
         right.translatesAutoresizingMaskIntoConstraints = false
         bottom.translatesAutoresizingMaskIntoConstraints = false
     }
-    func setup() {
+    func setup(width: CGFloat) {
         view.addSubview(top)
         view.addSubview(left)
         view.addSubview(right)
@@ -37,19 +36,17 @@ class BorderView {
     }
     
     func set(width: CGFloat) {
-        self.width = width
-        
         top.snp.remakeConstraints { [weak self] (make) in
-            make.height.equalTo(self!.view.superview!).multipliedBy(self!.width / 34)
+            make.height.equalTo(self!.view.superview!).multipliedBy(width / 34)
         }
         left.snp.remakeConstraints { [weak self] (make) in
-            make.width.equalTo(self!.view.superview!).multipliedBy(self!.width / 34)
+            make.width.equalTo(self!.view.superview!).multipliedBy(width / 34)
         }
         right.snp.remakeConstraints { [weak self] (make) in
-            make.width.equalTo(self!.view.superview!).multipliedBy(self!.width / 34)
+            make.width.equalTo(self!.view.superview!).multipliedBy(width / 34)
         }
         bottom.snp.remakeConstraints { [weak self] (make) in
-            make.height.equalTo(self!.view.superview!).multipliedBy(self!.width / 34)
+            make.height.equalTo(self!.view.superview!).multipliedBy(width / 34)
         }
     }
     
@@ -161,6 +158,8 @@ public class PVIView: UIView {
             makeCrossConstraints()
         case .check:
             makeCheckConstraints()
+        case .flag:
+            makeFlagConstraints()
         default:
             break;
         }
@@ -174,9 +173,9 @@ public class PVIView: UIView {
         }
         base.transform = resetTransform()
         
-        before.setup()
-        main.setup()
-        after.setup()
+        before.setup(width: 2)
+        main.setup(width: 2)
+        after.setup(width: 1)
         
         // before
         before.top.alpha = 1
@@ -207,7 +206,6 @@ public class PVIView: UIView {
         main.view.transform = resetTransform()
         
         // after
-        after.width = 1
         after.top.alpha = 1
         after.left.alpha = 1
         after.right.alpha = 1
@@ -229,9 +227,9 @@ public class PVIView: UIView {
         }
         base.transform = resetTransform()
         
-        before.setup()
-        main.setup()
-        after.setup()
+        before.setup(width: 2)
+        main.setup(width: 2)
+        after.setup(width: 2)
         
         // before
         before.top.alpha = 0
@@ -285,9 +283,9 @@ public class PVIView: UIView {
         }
         base.transform = resetTransform()
         
-        before.setup()
-        main.setup()
-        after.setup()
+        before.setup(width: 2)
+        main.setup(width: 2)
+        after.setup(width: 2)
         
         // before
         before.top.alpha = 0
@@ -340,9 +338,9 @@ public class PVIView: UIView {
         }
         base.transform = resetTransform()
         
-        before.setup()
-        main.setup()
-        after.setup()
+        before.setup(width: 2)
+        main.setup(width: 2)
+        after.setup(width: 2)
         
         // before
         before.top.alpha = 1
@@ -376,6 +374,11 @@ public class PVIView: UIView {
         after.right.alpha = 0
         after.bottom.alpha = 0
         
+        after.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.size.equalTo(0)
+        }
+        
         after.view.transform = resetTransform()
     }
     
@@ -387,9 +390,9 @@ public class PVIView: UIView {
         }
         base.transform = resetTransform()
         
-        before.setup()
-        main.setup()
-        after.setup()
+        before.setup(width: 2)
+        main.setup(width: 2)
+        after.setup(width: 2)
         
         // before
         before.top.alpha = 1
@@ -423,6 +426,11 @@ public class PVIView: UIView {
         after.right.alpha = 0
         after.bottom.alpha = 0
         
+        after.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.size.equalTo(0)
+        }
+        
         after.view.transform = resetTransform()
     }
     
@@ -434,9 +442,9 @@ public class PVIView: UIView {
         }
         base.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
         
-        before.setup()
-        main.setup()
-        after.setup()
+        before.setup(width: 2)
+        main.setup(width: 2)
+        after.setup(width: 2)
         
         // before
         before.top.alpha = 1
@@ -485,9 +493,9 @@ public class PVIView: UIView {
         }
         base.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_4))
         
-        before.setup()
-        main.setup()
-        after.setup()
+        before.setup(width: 2)
+        main.setup(width: 2)
+        after.setup(width: 2)
         
         // before
         before.top.alpha = 1
@@ -523,6 +531,66 @@ public class PVIView: UIView {
         after.right.alpha = 0
         after.bottom.alpha = 0
         
+        after.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.size.equalTo(0)
+        }
+        
+        after.view.transform = resetTransform()
+    }
+    
+    func makeFlagConstraints() {
+        base.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+            make.center.equalToSuperview()
+        }
+        base.transform = resetTransform()
+        
+        before.setup(width: 2)
+        main.setup(width: 2)
+        after.setup(width: 2)
+        
+        // before
+        before.top.alpha = 0
+        before.left.alpha = 1
+        before.right.alpha = 1
+        before.bottom.alpha = 0
+        
+        before.view.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview().multipliedBy(7 / 17.0)
+            make.centerY.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(3 / 34.0)
+            make.height.equalToSuperview().multipliedBy(25 / 34.0)
+        }
+        before.view.transform = resetTransform()
+        
+        // main
+        main.top.alpha = 1
+        main.left.alpha = 1
+        main.right.alpha = 1
+        main.bottom.alpha = 1
+        
+        main.view.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview().multipliedBy(13 / 17.0)
+            make.centerY.equalToSuperview().multipliedBy(12 / 17.0)
+            make.width.equalToSuperview().multipliedBy(14 / 34.0)
+            make.height.equalToSuperview().multipliedBy(12 / 34.0)
+        }
+        main.view.transform = resetTransform()
+        
+        // after
+        after.top.alpha = 1
+        after.left.alpha = 1
+        after.right.alpha = 1
+        after.bottom.alpha = 1
+        
+        after.view.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview().multipliedBy(22 / 17.0)
+            make.centerY.equalToSuperview().multipliedBy(14 / 17.0)
+            make.width.equalToSuperview().multipliedBy(10 / 34.0)
+            make.height.equalToSuperview().multipliedBy(12 / 34.0)
+        }
         after.view.transform = resetTransform()
     }
     
@@ -544,6 +612,8 @@ public class PVIView: UIView {
         case .cross:
             resetLayoutSubviews()
         case .check:
+            resetLayoutSubviews()
+        case .flag:
             resetLayoutSubviews()
         default:
             resetLayoutSubviews()

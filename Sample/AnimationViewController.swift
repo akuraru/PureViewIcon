@@ -28,7 +28,7 @@ class AnimationViewController: UIViewController, SelectIcon {
     
     func selectedViewIcon(index: Int) {
         UIView.animate(withDuration: 1.0) {
-            self.viewIcon.set(type: index + 1)
+            self.viewIcon.set(type: index)
             self.view.layoutIfNeeded()
         }
     }

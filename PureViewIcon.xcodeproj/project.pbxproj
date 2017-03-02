@@ -15,6 +15,7 @@
 		BE2D03EB1E4EA4E9008A19BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE2D03E91E4EA4E9008A19BF /* LaunchScreen.storyboard */; };
 		BE3C80A21E61D093006D06F7 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C80A11E61D093006D06F7 /* CollectionViewController.swift */; };
 		BE3C80A41E61D57C006D06F7 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C80A31E61D57C006D06F7 /* AnimationViewController.swift */; };
+		BE5A506E1E679EFD0019468C /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5A506D1E679EFD0019468C /* IconCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		BE2D03EC1E4EA4E9008A19BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE3C80A11E61D093006D06F7 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		BE3C80A31E61D57C006D06F7 /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
+		BE5A506D1E679EFD0019468C /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		EA8401D34A301CFBDDDA0545 /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +94,7 @@
 				BE2D03EC1E4EA4E9008A19BF /* Info.plist */,
 				BE3C80A11E61D093006D06F7 /* CollectionViewController.swift */,
 				BE3C80A31E61D57C006D06F7 /* AnimationViewController.swift */,
+				BE5A506D1E679EFD0019468C /* IconCell.swift */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE3C80A21E61D093006D06F7 /* CollectionViewController.swift in Sources */,
+				BE5A506E1E679EFD0019468C /* IconCell.swift in Sources */,
 				BE2D03E31E4EA4E9008A19BF /* ViewController.swift in Sources */,
 				BE2D03E11E4EA4E9008A19BF /* AppDelegate.swift in Sources */,
 				BE3C80A41E61D57C006D06F7 /* AnimationViewController.swift in Sources */,
