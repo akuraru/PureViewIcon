@@ -142,8 +142,6 @@ public class PVIView: UIView {
         after.view.snp.removeConstraints()
         
         switch PVIViewType(rawValue: type)! {
-        case.none:
-            return
         case .home:
             makeHomeConstraints()
         case .mail:
@@ -161,9 +159,57 @@ public class PVIView: UIView {
         case .flag:
             makeFlagConstraints()
         default:
-            break;
+            makeNoneConstraints()
         }
         layoutSubviews()
+    }
+    func makeNoneConstraints() {
+        base.snp.updateConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+            make.center.equalToSuperview()
+        }
+        base.transform = resetTransform()
+        
+        before.setup(width: 2)
+        main.setup(width: 2)
+        after.setup(width: 2)
+        
+        // before
+        before.top.alpha = 0
+        before.left.alpha = 0
+        before.right.alpha = 0
+        before.bottom.alpha = 0
+        
+        before.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.size.equalTo(0)
+        }
+        before.view.transform = resetTransform()
+        
+        // main
+        main.top.alpha = 0
+        main.left.alpha = 0
+        main.right.alpha = 0
+        main.bottom.alpha = 0
+        
+        main.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.size.equalTo(0)
+        }
+        main.view.transform = resetTransform()
+        
+        // after
+        after.top.alpha = 0
+        after.left.alpha = 0
+        after.right.alpha = 0
+        after.bottom.alpha = 0
+        
+        after.view.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.size.equalTo(0)
+        }
+        after.view.transform = resetTransform()
     }
     func makeHomeConstraints() {
         base.snp.updateConstraints { (make) in
@@ -199,7 +245,7 @@ public class PVIView: UIView {
         
         main.view.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().multipliedBy(1 + 12 / 34.0)
+            make.centerY.equalToSuperview().multipliedBy(23 / 17.0)
             make.width.equalToSuperview().multipliedBy(22 / 34.0)
             make.height.equalToSuperview().multipliedBy(18 / 34.0)
         }
@@ -239,7 +285,7 @@ public class PVIView: UIView {
         
         before.view.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().multipliedBy(0.65)
+            make.centerY.equalToSuperview().multipliedBy(11 / 17.0)
             make.width.equalToSuperview().multipliedBy(15.5 / 34.0)
             make.height.equalToSuperview().multipliedBy(15.5 / 34.0)
         }
