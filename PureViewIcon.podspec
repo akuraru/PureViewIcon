@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "PureViewIcon"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Pure UIView icon"
   s.homepage     = "https://github.com/akuraru/PureViewIcon"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
