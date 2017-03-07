@@ -79,6 +79,8 @@ public class PVIView: UIView {
             makeFlagConstraints()
         case .pause:
             makePauseConstraints()
+        case .stop:
+            makeStopConstraints()
         case .caretRight:
             makeCaretRightConstraints()
         case .caretLeft:
