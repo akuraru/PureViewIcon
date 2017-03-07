@@ -1,5 +1,5 @@
 //
-//  PVICaretRightCircle.swift
+//  PVICaretUpCircle.swift
 //
 //  Created by akuraru on 2017/02/11.
 //
@@ -8,7 +8,7 @@ import UIKit
 import SnapKit
 
 extension PVIView {
-    func makeCaretRightCircleConstraints() {
+    func makeCaretUpCircleConstraints() {
         base.snp.updateConstraints { (make) in
             make.width.equalToSuperview()
             make.height.equalToSuperview()
@@ -27,8 +27,8 @@ extension PVIView {
         before.bottom.alpha = 0
         
         before.view.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().dividedBy(14 / 17.0)
+            make.centerX.equalToSuperview().dividedBy(20 / 17.0)
+            make.centerY.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(11 / 34.0)
             make.height.equalToSuperview().multipliedBy(2 / 34.0)
         }
@@ -54,11 +54,22 @@ extension PVIView {
         after.bottom.alpha = 0
         
         after.view.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().dividedBy(20 / 17.0)
+            make.centerX.equalToSuperview().dividedBy(14 / 17.0)
+            make.centerY.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(11 / 34.0)
             make.height.equalToSuperview().multipliedBy(2 / 34.0)
         }
         after.view.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
+    }
+    
+    func caretRightCircleLayoutSubview() {
+        before.view.layer.borderWidth = 0
+        before.view.layer.cornerRadius = 0
+        
+        main.view.layer.borderWidth = self.frame.width * 2.0 / 34
+        main.view.layer.cornerRadius = self.frame.width * 15 / 34
+        
+        after.view.layer.borderWidth = 0
+        after.view.layer.cornerRadius = 0
     }
 }
