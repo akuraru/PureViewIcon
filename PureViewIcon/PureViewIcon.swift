@@ -95,6 +95,12 @@ public class PVIView: UIView {
             makeCaretDownCircleConstraints()
         case .caretRightSquare:
             makeCaretRightSquareConstraints()
+        case .caretLeftSquare:
+            makeCaretLeftSquareConstraints()
+        case .caretUpSquare:
+            makeCaretUpSquareConstraints()
+        case .caretDownSquare:
+            makeCaretDownSquareConstraints()
         default:
             makeNoneConstraints()
         }
@@ -123,7 +129,10 @@ public class PVIView: UIView {
             .caretUpCircle,
             .caretDownCircle:
             caretCircleLayoutSubview()
-        case .caretRightSquare:
+        case .caretRightSquare,
+            .caretLeftSquare,
+            .caretUpSquare,
+            .caretDownSquare:
             caretSquareLayoutSubview()
         default:
             resetLayoutSubviews()

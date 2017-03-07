@@ -1,5 +1,5 @@
 //
-//  PVICaretUpCircle.swift
+//  PVICaretDownSquare.swift
 //
 //  Created by akuraru on 2017/02/11.
 //
@@ -8,7 +8,7 @@ import UIKit
 import SnapKit
 
 extension PVIView {
-    func makeCaretUpCircleConstraints() {
+    func makeCaretDownSquareConstraints() {
         base.snp.updateConstraints { (make) in
             make.width.equalToSuperview()
             make.height.equalToSuperview()
@@ -32,7 +32,7 @@ extension PVIView {
             make.width.equalToSuperview().multipliedBy(11 / 34.0)
             make.height.equalToSuperview().multipliedBy(2 / 34.0)
         }
-        before.view.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_4))
+        before.view.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
         
         // main
         main.top.alpha = 0
@@ -59,6 +59,6 @@ extension PVIView {
             make.width.equalToSuperview().multipliedBy(11 / 34.0)
             make.height.equalToSuperview().multipliedBy(2 / 34.0)
         }
-        after.view.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
+        after.view.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_4))
     }
 }

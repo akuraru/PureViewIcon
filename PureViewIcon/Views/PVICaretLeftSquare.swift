@@ -1,5 +1,5 @@
 //
-//  PVICaretUpCircle.swift
+//  PVICaretLeftSquare.swift
 //
 //  Created by akuraru on 2017/02/11.
 //
@@ -8,7 +8,7 @@ import UIKit
 import SnapKit
 
 extension PVIView {
-    func makeCaretUpCircleConstraints() {
+    func makeCaretLeftSquareConstraints() {
         base.snp.updateConstraints { (make) in
             make.width.equalToSuperview()
             make.height.equalToSuperview()
@@ -27,12 +27,12 @@ extension PVIView {
         before.bottom.alpha = 0
         
         before.view.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview().dividedBy(20 / 17.0)
-            make.centerY.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().dividedBy(14 / 17.0)
             make.width.equalToSuperview().multipliedBy(11 / 34.0)
             make.height.equalToSuperview().multipliedBy(2 / 34.0)
         }
-        before.view.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_4))
+        before.view.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
         
         // main
         main.top.alpha = 0
@@ -54,11 +54,11 @@ extension PVIView {
         after.bottom.alpha = 0
         
         after.view.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview().dividedBy(14 / 17.0)
-            make.centerY.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().dividedBy(20 / 17.0)
             make.width.equalToSuperview().multipliedBy(11 / 34.0)
             make.height.equalToSuperview().multipliedBy(2 / 34.0)
         }
-        after.view.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
+        after.view.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_4))
     }
 }

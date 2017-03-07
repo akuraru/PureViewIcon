@@ -1,5 +1,5 @@
 //
-//  PVICaretUpCircle.swift
+//  PVICaretUpSquare.swift
 //
 //  Created by akuraru on 2017/02/11.
 //
@@ -8,7 +8,7 @@ import UIKit
 import SnapKit
 
 extension PVIView {
-    func makeCaretUpCircleConstraints() {
+    func makeCaretUpSquareConstraints() {
         base.snp.updateConstraints { (make) in
             make.width.equalToSuperview()
             make.height.equalToSuperview()
