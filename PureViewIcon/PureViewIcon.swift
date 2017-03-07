@@ -93,6 +93,8 @@ public class PVIView: UIView {
             makeCaretUpCircleConstraints()
         case .caretDownCircle:
             makeCaretDownCircleConstraints()
+        case .caretRightSquare:
+            makeCaretRightSquareConstraints()
         default:
             makeNoneConstraints()
         }
@@ -121,6 +123,8 @@ public class PVIView: UIView {
             .caretUpCircle,
             .caretDownCircle:
             caretCircleLayoutSubview()
+        case .caretRightSquare:
+            caretSquareLayoutSubview()
         default:
             resetLayoutSubviews()
         }
@@ -141,6 +145,16 @@ public class PVIView: UIView {
         
         main.view.layer.borderWidth = self.frame.width * 2.0 / 34
         main.view.layer.cornerRadius = self.frame.width * 15 / 34
+        
+        after.view.layer.borderWidth = 0
+        after.view.layer.cornerRadius = 0
+    }
+    func caretSquareLayoutSubview() {
+        before.view.layer.borderWidth = 0
+        before.view.layer.cornerRadius = 0
+        
+        main.view.layer.borderWidth = self.frame.width * 2.0 / 34
+        main.view.layer.cornerRadius = self.frame.width * 4 / 34
         
         after.view.layer.borderWidth = 0
         after.view.layer.cornerRadius = 0
