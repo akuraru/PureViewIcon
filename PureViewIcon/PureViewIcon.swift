@@ -85,6 +85,8 @@ public class PVIView: UIView {
             makeCaretUpConstraints()
         case .caretDown:
             makeCaretDownConstraints()
+        case .caretRightCircle:
+            makeCaretRightCircleConstraints()
         default:
             makeNoneConstraints()
         }
@@ -108,6 +110,8 @@ public class PVIView: UIView {
              .flag,
              .none:
             resetLayoutSubviews()
+        case .caretRightCircle:
+            caretRightCircleLayoutSubview()
         default:
             resetLayoutSubviews()
         }
