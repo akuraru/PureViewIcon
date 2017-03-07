@@ -77,6 +77,8 @@ public class PVIView: UIView {
             makeCheckConstraints()
         case .flag:
             makeFlagConstraints()
+        case .tag:
+            makeTagConstraints()
         case .pause:
             makePauseConstraints()
         case .stop:
@@ -128,6 +130,8 @@ public class PVIView: UIView {
              .flag,
              .none:
             resetLayoutSubviews()
+        case .tag:
+            tagLayoutSubview()
         case.caretRightCircle,
             .caretLeftCircle,
             .caretUpCircle,
