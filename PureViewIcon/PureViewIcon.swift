@@ -79,6 +79,12 @@ public class PVIView: UIView {
             makeFlagConstraints()
         case .caretRight:
             makeCaretRightConstraints()
+        case .caretLeft:
+            makeCaretLeftConstraints()
+        case .caretUp:
+            makeCaretUpConstraints()
+        case .caretDown:
+            makeCaretDownConstraints()
         default:
             makeNoneConstraints()
         }
