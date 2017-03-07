@@ -77,6 +77,8 @@ public class PVIView: UIView {
             makeCheckConstraints()
         case .flag:
             makeFlagConstraints()
+        case .caretRight:
+            makeCaretRightConstraints()
         default:
             makeNoneConstraints()
         }
