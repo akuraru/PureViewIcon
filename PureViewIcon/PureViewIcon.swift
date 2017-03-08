@@ -77,6 +77,8 @@ public class PVIView: UIView {
             makeCheckConstraints()
         case .flag:
             makeFlagConstraints()
+        case .crop:
+            makeCropConstraints()
         case .bookmarkEmpty:
             makeBookmarkEmptyConstraints()
         case .tag:
