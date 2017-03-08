@@ -77,6 +77,8 @@ public class PVIView: UIView {
             makeCheckConstraints()
         case .flag:
             makeFlagConstraints()
+        case .forbidden:
+            makeForbiddenConstraints()
         case .crop:
             makeCropConstraints()
         case .bookmarkEmpty:
@@ -134,6 +136,8 @@ public class PVIView: UIView {
              .flag,
              .none:
             resetLayoutSubviews()
+        case .forbidden:
+            forbiddenLayoutSubviews()
         case .tag:
             tagLayoutSubview()
         case.caretRightCircle,
