@@ -83,6 +83,8 @@ public class PVIView: UIView {
             makeForbiddenConstraints()
         case .crop:
             makeCropConstraints()
+        case .asterisk:
+            makeAsteriskConstraints()
         case .bookmarkEmpty:
             makeBookmarkEmptyConstraints()
         case .tag:
