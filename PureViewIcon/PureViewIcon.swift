@@ -77,6 +77,8 @@ public class PVIView: UIView {
             makeCheckConstraints()
         case .flag:
             makeFlagConstraints()
+        case .search:
+            makeSearchConstraints()
         case .forbidden:
             makeForbiddenConstraints()
         case .crop:
@@ -136,6 +138,8 @@ public class PVIView: UIView {
              .flag,
              .none:
             resetLayoutSubviews()
+        case .search:
+            searchLayoutSubviews()
         case .forbidden:
             forbiddenLayoutSubviews()
         case .tag:
