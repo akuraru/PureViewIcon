@@ -89,6 +89,8 @@ public class PVIView: UIView {
             makePlusCircleConstraints()
         case .checkCircle:
             mekeCheckCircleConstraints()
+        case .crossCircle:
+            makeCrossCircleConstraints()
         case .bookmarkEmpty:
             makeBookmarkEmptyConstraints()
         case .tag:
@@ -149,7 +151,8 @@ public class PVIView: UIView {
         case .forbidden:
             forbiddenLayoutSubviews()
         case .plusCircle,
-            .checkCircle:
+            .checkCircle,
+            .crossCircle:
             circleLayoutSubviews()
         case .tag:
             tagLayoutSubview()
