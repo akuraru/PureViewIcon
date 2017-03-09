@@ -91,6 +91,8 @@ public class PVIView: UIView {
             mekeCheckCircleConstraints()
         case .crossCircle:
             makeCrossCircleConstraints()
+        case .exclamationCircle:
+            makeExclamationCircleConstraints()
         case .bookmarkEmpty:
             makeBookmarkEmptyConstraints()
         case .tag:
@@ -159,7 +161,8 @@ public class PVIView: UIView {
         case.caretRightCircle,
             .caretLeftCircle,
             .caretUpCircle,
-            .caretDownCircle:
+            .caretDownCircle,
+            .exclamationCircle:
             caretCircleLayoutSubview()
         case .caretRightSquare,
             .caretLeftSquare,
