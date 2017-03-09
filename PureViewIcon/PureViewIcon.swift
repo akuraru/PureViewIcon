@@ -85,6 +85,10 @@ public class PVIView: UIView {
             makeCropConstraints()
         case .asterisk:
             makeAsteriskConstraints()
+        case .plusCircle:
+            makePlusCircleConstraints()
+        case .checkCircle:
+            mekeCheckCircleConstraints()
         case .bookmarkEmpty:
             makeBookmarkEmptyConstraints()
         case .tag:
@@ -144,6 +148,9 @@ public class PVIView: UIView {
             searchLayoutSubviews()
         case .forbidden:
             forbiddenLayoutSubviews()
+        case .plusCircle,
+            .checkCircle:
+            circleLayoutSubviews()
         case .tag:
             tagLayoutSubview()
         case.caretRightCircle,
@@ -166,6 +173,16 @@ public class PVIView: UIView {
         
         main.view.layer.borderWidth = 0
         main.view.layer.cornerRadius = 0
+        
+        after.view.layer.borderWidth = 0
+        after.view.layer.cornerRadius = 0
+    }
+    func circleLayoutSubviews() {
+        before.view.layer.borderWidth = 0
+        before.view.layer.cornerRadius = 0
+        
+        main.view.layer.borderWidth = self.frame.width * 2.0 / 34
+        main.view.layer.cornerRadius = self.frame.width * 15 / 34
         
         after.view.layer.borderWidth = 0
         after.view.layer.cornerRadius = 0
